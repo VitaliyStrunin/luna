@@ -1,6 +1,4 @@
-def main():
-    print("Hello from luna!")
+from fastapi import FastAPI
 
 
-if __name__ == "__main__":
-    main()
+app = FastAPI()
