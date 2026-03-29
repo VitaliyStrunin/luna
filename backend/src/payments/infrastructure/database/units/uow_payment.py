@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from database.repositories.payments import PaymentRepositoryPostgres
-from database.repositories.outbox import OutboxRepositoryPostgres
+from src.payments.infrastructure.database.repositories.payments import PaymentRepositoryPostgres
+from src.payments.infrastructure.database.repositories.outbox import OutboxRepositoryPostgres
 
 
 class UnitOfWorkPostgres:

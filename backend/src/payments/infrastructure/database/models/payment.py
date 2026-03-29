@@ -1,12 +1,12 @@
 import uuid
 from decimal import Decimal
 from datetime import datetime, timezone
-from database.base import Base
+from src.database.base import Base
 from sqlalchemy import func, UUID, Numeric, String, Text, JSON, DateTime, Enum
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.dialects.postgresql import JSONB
 from typing import Any
-from domain.entities.payment import PaymentStatus, Currency
+from src.payments.domain.entities.payment import PaymentStatus, Currency
 
 class PaymentDB(Base):
     __tablename__ = "payments"

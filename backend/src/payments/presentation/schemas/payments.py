@@ -4,7 +4,7 @@ from decimal import Decimal
 from pydantic import BaseModel, Field, HttpUrl
 from typing import Any
 
-from domain.entities.payment import Currency, PaymentStatus
+from src.payments.domain.entities.payment import Currency, PaymentStatus
  
 class PaymentReadSchema(BaseModel):
     id: uuid.UUID
@@ -20,12 +20,10 @@ class PaymentReadSchema(BaseModel):
 
 
 class PaymentCreateSchema(BaseModel):
-    id: uuid.UUID = Field(default_factory=uuid.uuid4)
     amount: Decimal = Field(ge=0)
     currency: Currency 
     description: str | None = None
     meta: dict[str, Any] | None = None
-    status: PaymentStatus
     webhook_url: HttpUrl
     
 

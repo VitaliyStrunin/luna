@@ -1,0 +1,2 @@
+class UpdatePaymentUseCase:
+    pass 
