@@ -1,5 +1,8 @@
 import asyncio
+import logging
 from typing import Callable, Any
+
+logger = logging.getLogger(__name__)
 
 
 async def retry_with_backoff(
@@ -10,8 +13,9 @@ async def retry_with_backoff(
     *args,
     **kwargs
 ) -> Any:
+
     last_exception = None
-    
+
     for attempt in range(max_attempts):
         try:
             return await func(*args, **kwargs)
@@ -19,7 +23,14 @@ async def retry_with_backoff(
             last_exception = e
             if attempt < max_attempts - 1:
                 delay = base_delay * (exponential_base ** attempt)
-                print(f"Attempt {attempt + 1}/{max_attempts} failed. Retry in {delay}s...")
+                logger.warning(
+                    f"Attempt {attempt + 1}/{max_attempts} failed "
+                    f"Next attempt in {delay}s. Error: {e}"
+                )
                 await asyncio.sleep(delay)
-    
+            else:
+                logger.error(
+                    f" All attempts failed, last error: {e}"
+                )
+
     raise last_exception

@@ -41,6 +41,3 @@ class PaymentCreate(BaseModel):
     webhook_url: str
     idempotency_key: str
     
-    
-class PaymentUpdate(BaseModel):
-    ...

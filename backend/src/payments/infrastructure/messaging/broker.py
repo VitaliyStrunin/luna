@@ -1,4 +1,10 @@
-from faststream.rabbit import RabbitBroker
+from faststream.rabbit import RabbitBroker, RabbitExchange
+from src.core.config import settings
 
-def create_broker(broker_url: str) -> RabbitBroker:
-    return RabbitBroker(broker_url)
+
+broker = RabbitBroker(settings.rabbitmq_url)
+
+payment_exchange = RabbitExchange(
+    name="payment_exchange",
+    durable=True
+)

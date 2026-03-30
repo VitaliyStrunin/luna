@@ -17,8 +17,3 @@ class PaymentOutboxCreate(BaseModel):
     payload: dict[str, Any]
     sent: bool = False
     
-    
-class PaymentOutboxUpdate(BaseModel):
-    idempotency_key: str | None = None
-    payload: dict[str, Any] | None = None
-    sent: bool | None 

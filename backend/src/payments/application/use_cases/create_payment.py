@@ -24,4 +24,6 @@ class CreatePaymentUseCase:
                 payload,
                 payment_create.idempotency_key
             )
+            print(f"Created payment ID: {payment.id}, idempotency_key: {payment_create.idempotency_key}")
+
             return payment

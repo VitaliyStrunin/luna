@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.payments.domain.entities.payment import PaymentCreate, Payment, PaymentStatus
 from src.payments.infrastructure.database.models.payment import PaymentDB
 from sqlalchemy import select, update
-
+from datetime import datetime, timezone
 
 class PaymentRepositoryPostgres(IPaymentRepository):
     def __init__(self, session: AsyncSession):
@@ -32,7 +32,7 @@ class PaymentRepositoryPostgres(IPaymentRepository):
                 PaymentDB.idempotency_key == idempotency_key,
                 PaymentDB.status == PaymentStatus.PENDING,
             )
-            .values(status=status)
+            .values(status=status, processed_at=datetime.now(timezone.utc))
         )
-        await self.__session.commit()
+        await self.__session.flush()
         return result.rowcount > 0
