@@ -1,6 +1,7 @@
-from src.payments.infrastructure.database.units.uow_payment import UnitOfWorkPostgres
-from src.payments.domain.entities.payment import PaymentCreate, Payment
 from src.core.exceptions import PaymentAlreadyExists
+from src.payments.domain.entities.payment import Payment, PaymentCreate
+from src.payments.infrastructure.database.units.uow_payment import UnitOfWorkPostgres
+
 
 class CreatePaymentUseCase:
     def __init__(self, uow: UnitOfWorkPostgres):

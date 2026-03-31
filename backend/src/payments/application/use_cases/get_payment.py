@@ -1,6 +1,9 @@
-from src.payments.infrastructure.database.repositories.interfaces.payment import IPaymentRepository
-from src.payments.domain.entities.payment import Payment
 from src.core.exceptions import PaymentNotFoundByID, PaymentNotFoundByIdempotencyKey
+from src.payments.domain.entities.payment import Payment
+from src.payments.infrastructure.database.repositories.interfaces.payment import (
+    IPaymentRepository,
+)
+
 
 class GetPaymentUseCase:
     def __init__(self, payment_repo: IPaymentRepository):

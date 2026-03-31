@@ -23,3 +23,8 @@ test = [
     "pytest-asyncio>=0.23",
     "pytest-cov>=4.1",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.8",
+]

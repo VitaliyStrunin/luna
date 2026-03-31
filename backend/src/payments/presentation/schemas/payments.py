@@ -1,11 +1,12 @@
 import uuid
 from datetime import datetime
 from decimal import Decimal
-from pydantic import BaseModel, Field, HttpUrl
 from typing import Any
 
+from pydantic import BaseModel, Field, HttpUrl
 from src.payments.domain.entities.payment import Currency, PaymentStatus
- 
+
+
 class PaymentReadSchema(BaseModel):
     id: uuid.UUID
     amount: Decimal = Field(ge=0)

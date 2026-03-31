@@ -3,7 +3,6 @@ import logging
 
 from src.worker.consumer import app
 
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

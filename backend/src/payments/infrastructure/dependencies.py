@@ -1,10 +1,13 @@
-from src.database.session import get_async_db_session
-from src.payments.infrastructure.database.units.uow_payment import UnitOfWorkPostgres
-from src.payments.infrastructure.database.repositories.payments import PaymentRepositoryPostgres
-from src.payments.application.use_cases.get_payment import GetPaymentUseCase
-from src.payments.application.use_cases.create_payment import CreatePaymentUseCase
-from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Depends
+from sqlalchemy.ext.asyncio import AsyncSession
+from src.database.session import get_async_db_session
+from src.payments.application.use_cases.create_payment import CreatePaymentUseCase
+from src.payments.application.use_cases.get_payment import GetPaymentUseCase
+from src.payments.infrastructure.database.repositories.payments import (
+    PaymentRepositoryPostgres,
+)
+from src.payments.infrastructure.database.units.uow_payment import UnitOfWorkPostgres
+
 
 def get_payment_repository(session: AsyncSession = Depends(get_async_db_session)):
     return PaymentRepositoryPostgres(session)

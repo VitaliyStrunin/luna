@@ -1,9 +1,10 @@
 import uuid
 from datetime import datetime
 from decimal import Decimal
-from pydantic import BaseModel, ConfigDict, HttpUrl
-from typing import Any
 from enum import Enum
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, HttpUrl
 
 
 class Currency(str, Enum):

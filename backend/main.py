@@ -1,16 +1,14 @@
 import asyncio
 import logging
-from fastapi import FastAPI, Request, status
-from fastapi.exceptions import RequestValidationError
 from contextlib import asynccontextmanager
 
+from fastapi import FastAPI, Request, status
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from src.database.base import Base
 from src.database.session import engine
-from src.payments.presentation.api.v1.routes import payment_router
-from src.payments.infrastructure.messaging.publisher import outbox_publisher
 from src.payments.infrastructure.messaging.broker import broker
-from src.core.config import settings
+from src.payments.infrastructure.messaging.publisher import outbox_publisher
+from src.payments.presentation.api.v1.routes import payment_router
 
 logging.basicConfig(
     level=logging.INFO,

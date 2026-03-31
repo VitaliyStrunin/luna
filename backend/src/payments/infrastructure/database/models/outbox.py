@@ -1,9 +1,10 @@
 import uuid
-from src.database.base import Base
-from sqlalchemy import UUID, String, JSON, Boolean, text
-from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy.dialects.postgresql import JSONB
 from typing import Any
+
+from sqlalchemy import JSON, UUID, Boolean, String, text
+from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.orm import Mapped, mapped_column
+from src.database.base import Base
 
 
 class PaymentOutboxDB(Base):

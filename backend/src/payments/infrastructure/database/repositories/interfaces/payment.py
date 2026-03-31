@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class IPaymentRepository(ABC):
     @abstractmethod
     async def create(self):

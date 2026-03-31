@@ -1,6 +1,7 @@
 import uuid
-from pydantic import BaseModel, ConfigDict
 from typing import Any
+
+from pydantic import BaseModel, ConfigDict
 
 
 class PaymentOutbox(BaseModel):

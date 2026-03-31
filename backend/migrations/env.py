@@ -1,14 +1,12 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-
 from alembic import context
-
-from src.database.base import Base
+from sqlalchemy import engine_from_config, pool
 from src.core.config import settings
+from src.database.base import Base
 from src.payments.infrastructure.database.models.outbox import PaymentOutboxDB
 from src.payments.infrastructure.database.models.payment import PaymentDB
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

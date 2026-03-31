@@ -1,9 +1,12 @@
 import asyncio
 import logging
-from src.payments.infrastructure.database.repositories.outbox import OutboxRepositoryPostgres
-from src.payments.infrastructure.messaging.broker import broker, payment_exchange
+
 from faststream.rabbit import RabbitBroker, RabbitExchange
 from src.database.session import async_session_maker
+from src.payments.infrastructure.database.repositories.outbox import (
+    OutboxRepositoryPostgres,
+)
+from src.payments.infrastructure.messaging.broker import broker, payment_exchange
 
 logger = logging.getLogger(__name__)
 

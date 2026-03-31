@@ -1,5 +1,5 @@
+from fastapi import Header, HTTPException, status
 from src.core.config import settings
-from fastapi import status, Header, HTTPException
 
 
 def verify_api_key(x_api_key: str = Header(alias="X-API-Key")):

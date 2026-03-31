@@ -1,12 +1,14 @@
 import uuid
-from decimal import Decimal
 from datetime import datetime, timezone
-from src.database.base import Base
-from sqlalchemy import func, UUID, Numeric, String, Text, JSON, DateTime, Enum
-from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy.dialects.postgresql import JSONB
+from decimal import Decimal
 from typing import Any
-from src.payments.domain.entities.payment import PaymentStatus, Currency
+
+from sqlalchemy import JSON, UUID, DateTime, Enum, Numeric, String, Text, func
+from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.orm import Mapped, mapped_column
+from src.database.base import Base
+from src.payments.domain.entities.payment import Currency, PaymentStatus
+
 
 class PaymentDB(Base):
     __tablename__ = "payments"

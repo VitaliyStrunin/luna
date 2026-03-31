@@ -1,16 +1,15 @@
 import asyncio
-import random
 import logging
+import random
 
 from faststream import FastStream
 from faststream.rabbit import RabbitBroker, RabbitExchange, RabbitQueue
-
-from src.worker.retry import retry_with_backoff
-from src.worker.webhook import send_webhook
+from src.core.config import settings
+from src.database.session import async_session_maker
 from src.payments.domain.entities.payment import PaymentStatus
 from src.payments.infrastructure.database.units.uow_payment import UnitOfWorkPostgres
-from src.database.session import async_session_maker
-from src.core.config import settings
+from src.worker.retry import retry_with_backoff
+from src.worker.webhook import send_webhook
 
 logger = logging.getLogger(__name__)
 
