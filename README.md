@@ -127,7 +127,6 @@ luna/
 ├── Dockerfile.api                # Dockerfile для API
 ├── Dockerfile.worker             # Dockerfile для Worker
 ├── pyproject.toml                # Зависимости проекта (uv/pip)
-├── pytest.ini                    # Конфигурация pytest
 └── .env.example                  # Шаблон переменных окружения
 ```
 
