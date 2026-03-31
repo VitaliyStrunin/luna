@@ -15,7 +15,7 @@
 ### 1. Клонирование репозитория
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/VitaliyStrunin/luna
 cd luna
 ```
 
