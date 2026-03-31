@@ -1,6 +1,11 @@
+import logging
+
 from src.core.exceptions import PaymentAlreadyExists
 from src.payments.domain.entities.payment import Payment, PaymentCreate
 from src.payments.infrastructure.database.units.uow_payment import UnitOfWorkPostgres
+
+
+logger = logging.getLogger(__name__)
 
 
 class CreatePaymentUseCase:
@@ -25,6 +30,6 @@ class CreatePaymentUseCase:
                 payload,
                 payment_create.idempotency_key
             )
-            print(f"Created payment ID: {payment.id}, idempotency_key: {payment_create.idempotency_key}")
+            logger.info(f"Created payment ID: {payment.id}, idempotency_key: {payment_create.idempotency_key}")
 
             return payment
