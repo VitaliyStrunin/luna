@@ -24,7 +24,7 @@ class OutboxPublisher:
         self.__routing_key = routing_key
         self.__running = True
 
-    async def stop(self):
+    def stop(self):
         self.__running = False
 
     async def run(self):

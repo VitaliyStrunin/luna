@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, suppress
 
 from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
@@ -21,13 +21,16 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     await broker.start()
     publisher_task = asyncio.create_task(outbox_publisher.run())
-    
-    yield
-    
-    outbox_publisher.stop()
-    await broker.stop()
-    await publisher_task.cancel()
-    await engine.dispose()
+
+    try:
+        yield
+    finally:
+        outbox_publisher.stop()
+        publisher_task.cancel()
+        with suppress(asyncio.CancelledError):
+            await publisher_task
+        await broker.stop()
+        await engine.dispose()
 
 
 app = FastAPI(lifespan=lifespan)
